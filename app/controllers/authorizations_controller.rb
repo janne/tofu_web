@@ -10,8 +10,9 @@ class AuthorizationsController < ApplicationController
     else
       config = YAML.load_file("config/dropbox.yml")
       dropbox_session = Dropbox::Session.new(config['key'], config['secret'])
+      dropbox_session.mode = :dropbox
       session[:dropbox_session] = dropbox_session.serialize
-      redirect_to dropbox_session.authorize_url(:oauth_callback => new_authorizations_url)
+      redirect_to dropbox_session.authorize_url(:oauth_callback => new_authorization_url)
     end
   end
 end
