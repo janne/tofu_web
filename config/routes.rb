@@ -1,5 +1,5 @@
 TofuWeb::Application.routes.draw do
-  resource :items
+  resource :authorizations, :items
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
