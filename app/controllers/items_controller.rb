@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
   def index
-    render :text => "Here be items"
+    @items = @dropbox_session.download("todo/stugan.txt").split("\n")
   end
 end
