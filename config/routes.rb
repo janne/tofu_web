@@ -1,8 +1,5 @@
 TofuWeb::Application.routes.draw do
-  resources :authorizations
-
-  resource :home
-
+  resource :home, :authorization
   resources :lists do
     resources :items
   end
