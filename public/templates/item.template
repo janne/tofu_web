@@ -1,0 +1,2 @@
+<% if (item.prio) { %><li class='prio_<%= item.prio.toLowerCase() %>'><% } else { %><li><% } %>
+<%= item.text %></li>

@@ -1,12 +1,13 @@
 app = Sammy '#main', ->
+  this.use "Template"
 
   # List index
   this.get '#/', (context) ->
     $('#main').empty()
+    $('#main').append("<ul id='lists'></ul>")
     this.load("/lists").then (lists) ->
-      $('#main').append("<ul id='lists'></ul>")
       for list in lists
-        $('#lists').append("<li><a href='#/lists/#{list}'>#{list}</a></li>")
+        this.render('templates/lists.template', { list: list }).appendTo('#lists')
 
   # Items index
   this.get '#/lists/:id', ->
@@ -14,10 +15,7 @@ app = Sammy '#main', ->
       $('#main').empty().append("<a href='#/'>Back</a>")
       $('#main').append("<ul id='items'></ul>")
       for item in items
-        if item.prio
-          $('#items').append("<li class='prio_#{item.prio.toLowerCase()}'>#{item.text}</li>")
-        else
-          $('#items').append("<li>#{item.text}</li>")
+        this.render('templates/item.template', { item: item }).appendTo('#items')
 
 $ ->
   app.run('#/')
