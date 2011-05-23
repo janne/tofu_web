@@ -60,7 +60,7 @@ h1 { font-size: 24px; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; }
 
-#container {
+#main {
   margin: 0 auto;
   background-color: #FFF;
   padding: 20px 40px;
@@ -108,4 +108,18 @@ h3 { font-size: 16px; }
 
 .none {
   display:none;
+}
+ul#lists, ul#items {
+  list-style: none;
+  padding-left: 10px;
+}
+ul#items li.prio_a {
+  color: #A00;
+  font-weight: bold;
+}
+ul#items li.prio_b {
+  color: #AA0;
+}
+ul#items li.prio_c {
+  color: #0A0;
 }
