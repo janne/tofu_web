@@ -2,14 +2,16 @@ class ListsController < ApplicationController
   LIST_BASE = "todo"
 
   def index
-    unless @lists = todo_lists
-      render :text => "Folder ~/Dropbox/#{LIST_BASE}/ can not be found"
+    if @lists = todo_lists
+      render :json => @lists
+    else
+      render :json => {:error => "Folder ~/Dropbox/#{LIST_BASE}/ can not be found"}, :code => 404
     end
   end
 
   def show
     list = params[:id] || 'todo'
-    @items = @dropbox_session.download("#{LIST_BASE}/#{list}.txt").split("\n")
+    render :json => todo_items(list)
   end
 
   private
